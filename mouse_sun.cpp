@@ -3,14 +3,16 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <iostream>
+#include <filesystem> // to check if the input file exist
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#define MOUSE_FILE		"/dev/input/event4"
-#define BUTTON_WIDTH	100
-#define BUTTON_HIEGHT	60
-#define SHOW_BORDERS	true
-#define SHOW_MOUSE		true
+char MOUSE_FILE[22] =	"/dev/input/event4";
+int MOUSE_WIDTH =		90;
+int MOUSE_HIEGHT =		90;
+bool SHOW_BORDERS =		true;
+bool SHOW_MOUSE =		true;
+
 
 using namespace std;
 
@@ -26,22 +28,27 @@ void imageToTexture(string image_path, SDL_Texture* &tex_temp, SDL_Renderer* ren
 	SDL_FreeSurface(sur_temp);
 }
 
-int main() {
+void print_help() 
+{
+	system("man -c ./mouse_sun.1");
+	exit(0);
+}
+
+int main(int argc, char* argv[]) {
+
+	int X=0,Y=0;
+	#include "arg.h"
+
 	// the x,y positons and width and hieght on the window
 	SDL_Rect rect_mouse;
-	SDL_Rect rect_mouse_rightP;
-	SDL_Rect rect_mouse_leftP;
-	SDL_Rect rect_mouse_wheelP;
-	SDL_Rect rect_mouse_wheelup;
-	SDL_Rect rect_mouse_wheeldown;
 
-	rect_mouse =	{0, 0, BUTTON_WIDTH, BUTTON_HIEGHT}; 
+	rect_mouse =	{0, 0, MOUSE_WIDTH, MOUSE_HIEGHT}; 
 
 	SDL_Window* window = NULL;
 	if (SHOW_BORDERS)
-		window = SDL_CreateWindow( "keysun", 0, 0, BUTTON_WIDTH, BUTTON_HIEGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_UTILITY | SDL_WINDOW_ALWAYS_ON_TOP);
+		window = SDL_CreateWindow( "keysun", X, Y, MOUSE_WIDTH, MOUSE_HIEGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_UTILITY | SDL_WINDOW_ALWAYS_ON_TOP);
 	else
-		window = SDL_CreateWindow( "keysun", 0, 0, BUTTON_WIDTH, BUTTON_HIEGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS | SDL_WINDOW_UTILITY | SDL_WINDOW_ALWAYS_ON_TOP);
+		window = SDL_CreateWindow( "keysun", X, Y, MOUSE_WIDTH, MOUSE_HIEGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS | SDL_WINDOW_UTILITY | SDL_WINDOW_ALWAYS_ON_TOP);
 
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
@@ -59,7 +66,6 @@ int main() {
 		cout << "Cannot open " << MOUSE_FILE << endl;
 		return 1;
 	}
-	cout << "files opened";
 
 	SDL_RenderPresent(renderer);
 
@@ -68,6 +74,11 @@ int main() {
 	bool close = false; // if set to true the loop exit (to close the app)
 	while (!close)
 	{
+		while ( SDL_PollEvent( &sdl_input ) != 0 ) 
+		{
+			// checking if you want to close the app
+			if (sdl_input.type == SDL_QUIT) close =true;
+		}
 		ssize_t mouse_bytesRead = read(mouse_input, &global_mouse, sizeof(global_mouse));
 		if (mouse_bytesRead == (ssize_t)-1) {
 			cout << "Failed to read from " << MOUSE_FILE << ". but it was opened successfuly" << endl;
@@ -108,11 +119,6 @@ int main() {
 			SDL_Delay(200);
 			SDL_RenderCopy(renderer, tex_mouse,  NULL, &rect_mouse);
 			SDL_RenderPresent(renderer);
-		}
-		while ( SDL_PollEvent( &sdl_input ) != 0 ) 
-		{
-			// checking if you want to close the app
-			if (sdl_input.type == SDL_QUIT) close =true;
 		}
 	}
 	return 0;
