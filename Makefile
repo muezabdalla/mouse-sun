@@ -14,3 +14,5 @@ mouse_sun: $(SRC)
 
 clean :
 	rm $(TARGET)
+
+install: mouse_sun

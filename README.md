@@ -34,7 +34,7 @@ apt install SDL2-dev SDL2_image-dev make gcc
 after installing the dependancies, download the repository and `cd` into it and run this command to build from source:
 
 ```
-make
+make install
 ```
 
 if you want to remove the package run:
