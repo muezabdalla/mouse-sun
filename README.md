@@ -10,14 +10,54 @@ this is a software to show the mouse clicks on screen. it is useful when making 
 [comment]: # (<img src="./screenshots/mouse.png" height="100" align="left"/>)
 
 ## how to install
-first install the following dependancies on your system
+first download the tar file from the [releases](https://github.com/muezabdalla/mouse/releases)
+note: download the mouse-sun.tar not the source code(the source code is for building from source)
+
+then extract the tar file with this command:
+
+```
+tar -xf mouse-sun.tar
+```
+
+then move inside the new folder
+
+```
+cd mouse-sun*
+```
+
+then install the dependancies
+
+### dependancies:
+
+- SDL2
+- SDL2_image
+
+installing dependancies on void linux:
+
+```
+xbps-install SDL2-devel SDL2_image-devel make gcc
+```
+
+installing dependancies on debian-based linux:
+
+```
+apt install libsdl2-dev libsdl2-image-dev make gcc
+```
+
+then to run it:
+
+```
+./mouse-sun
+```
+
+## building from source
 
 ### dependancies:
 
 - SDL2-devel
 - SDL2_image-devel
-- gcc
-- make
+- gcc (only for compilation)
+- make (only for compilation)
 
 for void linux:
 
@@ -28,7 +68,7 @@ xbps-install SDL2-devel SDL2_image-devel make gcc
 for debian-based linux:
 
 ```
-apt install libsdl2-dev libsdl2-image-dev
+apt install libsdl2-dev libsdl2-image-dev make gcc
 ```
 
 after installing the dependancies, download the repository and `cd` into it and run this command to build from source:
