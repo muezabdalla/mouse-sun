@@ -36,13 +36,11 @@ void print_help()
 
 int main(int argc, char* argv[]) {
 
-	int X=0,Y=0;
+	int X=0,Y=0; // position variables
 	#include "arg.h"
 
 	// the x,y positons and width and hieght on the window
-	SDL_Rect rect_mouse;
-
-	rect_mouse =	{0, 0, MOUSE_WIDTH, MOUSE_HIEGHT}; 
+	SDL_Rect rect_mouse =	{0, 0, MOUSE_WIDTH, MOUSE_HIEGHT}; 
 
 	SDL_Window* window = NULL;
 	if (SHOW_BORDERS)
