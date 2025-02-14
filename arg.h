@@ -1,10 +1,7 @@
 #define SCREEN_W 1920
 #define SCREEN_H 1080-60
 
-int i =1;
-string arg_next;
-string arg_next2;
-
+i = 1;
 while (i < argc)
 {
 	string arg_current = argv[i];

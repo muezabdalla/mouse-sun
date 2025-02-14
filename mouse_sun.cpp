@@ -35,6 +35,10 @@ void print_help()
 }
 
 int main(int argc, char* argv[]) {
+	// variables for handing arguments
+	int i;
+	string arg_next;
+	string arg_next2;
 
 	int X=0,Y=0; // position variables
 	#include "arg.h"
