@@ -91,8 +91,8 @@ to run it:
 
 ## common issues:
 
-- if it does not show the keys when you click that means you should change the `KEYBOARD_FILE` variable in the `key_sun.cpp` file. this is becouse the input file for your keyboard might be differant so check the event file in your `/dev/input/eventX' where X might be any number.
-for example if you want to check `/dev/input/event2` then run `cat /dev/input/event2` then click any key on the keyboard if there is an output it means that this is the keyboard input file else try another file.
+- if it does not show effect when you click that means you should change the input file by using -i flag. this is becouse the input file for your mouse file might be differant so check the event file in your `/dev/input/eventX' where X might be any number.
+for example if you want to check `/dev/input/event2` then run `cat /dev/input/event2` then move the mouse if there is an output it means that this is the mouse input file else try another file.
 - if when you use `cat /dev/input/event0` you get authentication failed or something like that. then you have two options. first: run the program as root (not recommended) second: add yourself to the input group
 
 ## other project:
