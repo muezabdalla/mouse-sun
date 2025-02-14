@@ -28,7 +28,7 @@ xbps-install SDL2-devel SDL2_image-devel make gcc
 for debian-based linux:
 
 ```
-apt install SDL2-dev SDL2_image-dev make gcc
+apt install libsdl2-dev libsdl2-image-dev
 ```
 
 after installing the dependancies, download the repository and `cd` into it and run this command to build from source:
