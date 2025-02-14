@@ -24,14 +24,14 @@ while (i < argc)
 		else if (arg_next == "left")
 			X = 0;
 		else 
-			X = strtol(argv[i+1], &argv[i+1], 10);
+			X = atoi(argv[i+1]);
 
 		if (arg_next2 == "top")
 			Y = 0;
 		else if (arg_next2 == "buttom")
 			Y = SCREEN_H-MOUSE_HIEGHT;
 		else 
-			Y = strtol(argv[i+1], &argv[i+1], 10);
+			Y = atoi(argv[i+1]);
 
 		i+=3;
 	} else if (arg_current == "-S") {
@@ -42,13 +42,13 @@ while (i < argc)
 			return 1;
 		}
 
-		MOUSE_WIDTH = strtol(argv[i+1], &argv[i+1], 10);
+		MOUSE_WIDTH = atoi(argv[i+1]);
 		if (MOUSE_WIDTH == 0) // if the input was string this cindition will be true
 		{
 			cout << argv[i+1] << " is not a valid input" << endl;
 			return 1;
 		}
-		MOUSE_HIEGHT = strtol(argv[i+2], &argv[i+2], 10);
+		MOUSE_HIEGHT = atoi(argv[i+2]);
 		if (MOUSE_HIEGHT == 0) // if the input was string this cindition will be true
 		{
 			cout << argv[i+2] << " is not a valid input" << endl;
