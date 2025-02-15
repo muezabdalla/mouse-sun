@@ -10,7 +10,7 @@ this is a software to show the mouse clicks on screen. it is useful when making 
 [comment]: # (<img src="./screenshots/mouse.png" height="100" align="left"/>)
 
 ## how to install
-first download the tar file from the [releases](https://github.com/muezabdalla/mouse/releases)
+first download the tar file from the [releases](https://github.com/muezabdalla/mouse-sun/releases)
 note: download the mouse-sun.tar not the source code(the source code is for building from source)
 
 then extract the tar file with this command:
