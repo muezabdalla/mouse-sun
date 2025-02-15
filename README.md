@@ -2,7 +2,7 @@
 
 ![preview when clicked](./screenshots/clicked.png "image")
 
-this is the image when you click the right button.
+this is the image when you click the left button.
 
 ## The mouse monitoring software for linux
 this is a software to show the mouse clicks on screen. it is useful when making a tutorial video so that learners know what you pressed.
