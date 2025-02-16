@@ -1,4 +1,4 @@
-# mouse_sun
+# mouse-sun
 
 ![preview when clicked](./screenshots/clicked.png "image")
 
@@ -86,7 +86,7 @@ make clean
 to run it:
 
 ```
-./mouse_sun
+./mouse-sun
 ```
 
 ## common issues:

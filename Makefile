@@ -6,7 +6,7 @@ MANPREFIX = $(PREFIX)/share/man
 
 LIBS = -lSDL2 -lSDL2_image
 
-SRC = mouse_sun.cpp
+SRC = mouse-sun.cpp
 TARGET = mouse-sun
 
 mouse-sun: $(SRC)
