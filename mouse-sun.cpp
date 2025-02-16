@@ -1,4 +1,4 @@
-// g++ key_sun.cpp -o key_sun.cpp.o -lSDL2 -lSDL2_image && ./key_sun.cpp.o
+// g++ mouse-sun.cpp -o mouse-sun.cpp.o -lSDL2 -lSDL2_image && ./mouse-sun.cpp.o
 #include <linux/input.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -38,7 +38,8 @@ void imageToTexture(string image_path, SDL_Texture* &tex_temp, SDL_Renderer* ren
 
 void print_help() 
 {
-	system("man -c ./mouse-sun.1");
+	// use the current_path to make run even from a differant directory
+	system(("man -c "+current_path+"mouse-sun.1").c_str());
 	exit(0);
 }
 
