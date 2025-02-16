@@ -85,5 +85,10 @@ while (i < argc)
 		}
 		i+=2;
 
+	} else {
+		cout << "argument:" << arg_current << " is not an allowable argument\nhere is the manual to see the allowable argument\n" << endl;
+		print_help();
+		i++;
 	}
+
 }
