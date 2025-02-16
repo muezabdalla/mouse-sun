@@ -16,10 +16,18 @@ bool SHOW_MOUSE =		true;
 
 using namespace std;
 
+string current_path;
+string image_absolute_path;
 void imageToTexture(string image_path, SDL_Texture* &tex_temp, SDL_Renderer* renderer_temp)
 {
+	image_absolute_path = current_path + image_path;
+	if (!std::filesystem::is_regular_file(image_absolute_path))
+	{
+		cout << "file\"" << image_absolute_path << "\" does not exist" << endl;
+		exit(0);
+	}
 	// this is to convert a string to a const char * to be able to use it in IMG_Load
-	const char * image_path_converted = image_path.c_str();
+	const char * image_path_converted = image_absolute_path.c_str();
 	// making the surfaces from the images
 	SDL_Surface* sur_temp =	IMG_Load(image_path_converted);
 	// making the texture from the surfaces
@@ -35,6 +43,10 @@ void print_help()
 }
 
 int main(int argc, char* argv[]) {
+	current_path = argv[0];
+	// remove last seven chars(mouse-sun) by subtracting totall length - 7
+	current_path.erase(current_path.length() - 9);
+
 	// variables for handing arguments
 	int i;
 	string arg_next;
