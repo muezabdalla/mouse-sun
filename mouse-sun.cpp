@@ -45,7 +45,7 @@ void print_help()
 
 int main(int argc, char* argv[]) {
 	current_path = argv[0];
-	// remove last seven chars(mouse-sun) by subtracting totall length - 7
+	// remove last seven chars(mouse-sun) by subtracting totall length - 9
 	current_path.erase(current_path.length() - 9);
 
 	// variables for handing arguments
